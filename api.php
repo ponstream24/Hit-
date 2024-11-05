@@ -14,6 +14,7 @@ if(
 ){
     $func = $_GET["func"];
 
+    // 数字 -> hit,blow
     if( $func == "check_number" ){
         
         $res["status"] = true;

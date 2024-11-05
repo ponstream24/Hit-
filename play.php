@@ -9,6 +9,7 @@
         isset( $_POST ) &&
         isset( $_POST["type"] )
     ){
+        // シングル戦
         if( $_POST["type"] == "single" ){
 
             $duplicates = true;
@@ -25,7 +26,12 @@
             
             setNumber($duplicates);
         }
+
+        // オンライン戦
         else{
+
+            // if( isset($_POST["roomid"]) ){
+            // }
 
             // 非公開サーバーのため、ここは強制タイムアウト
             $err["message"] = "Timeout : マッチングサーバーとの接続ができませんでした。";

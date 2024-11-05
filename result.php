@@ -78,6 +78,8 @@
     </section>
 
     <script>
+
+        // 文字列を順番に表示
         function displayText(text, interval = 100, id = "chat") {
             return new Promise((resolve) => {
                 const target = document.getElementById(id);
@@ -87,6 +89,7 @@
 
                 let index = 0;
 
+                // 一文字表示
                 function addCharacter() {
                     if (index < text.length) {
                         
@@ -102,14 +105,17 @@
                     }
                 }
 
+                // 一文字表示
                 addCharacter();
             });
         }
 
+        // もう一度を表示
         function showOnemore() {
             document.getElementById("onemore").style.display = "flex";
         }
 
+        // メッセージを表示
         async function showMessages() {
             await displayText("結果は... <?=$result_title?>");
             await displayText("正解 : <?=$correct?>");
@@ -124,8 +130,11 @@
             showOnemore();
         }
 
+        // 表示
         function show(){
             document.getElementById("show").style.display = "none";
+
+            // メッセージを表示
             showMessages();
         }
     </script>

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * setNumber
+ * ランダム数字をセット
+ * @param  mixed $duplicates 重複の許可
+ * @return void
+ */
 function setNumber($duplicates = true){
 
     $_SESSION["number"] = GenerateCode(4, $duplicates);
@@ -8,10 +14,22 @@ function setNumber($duplicates = true){
     $_SESSION["result_blow"] = 0;
 }
 
+/**
+ * getNumber
+ * セッションの数字を返す
+ * @return int
+ */
 function getNumber(){
 
     return $_SESSION["number"];
 }
+
+/**
+ * checkNumber
+ * $numberのhit数,blow数を返す
+ * @param  mixed $number 確認したい数字
+ * @return array
+ */
 function checkNumber($number) {
 
     $res = array();

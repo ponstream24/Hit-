@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * html_header
+ * header部分を出力
+ * @param  mixed $title ページタイトル
+ * @param  mixed $body_id <body id="">のid
+ * @return void
+ */
 function html_header($title, $body_id = ""){
 
 echo <<<HTML

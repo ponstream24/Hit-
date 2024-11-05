@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * html_footer
+ * footer部分を出力
+ * @return void
+ */
 function html_footer(){
 
 echo <<<HTML
