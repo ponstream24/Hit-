@@ -32,6 +32,8 @@
     $result_blow = $_SESSION["result_blow"];
     $count = $_SESSION["check_count"];
 
+    $comment_count = 100;
+
     if( $count <= 2 ){
         $message = "豪運です！実力ではないのでもう一度やり直してください。";
     }
@@ -51,7 +53,8 @@
     }
     else{
         $result_title = "中断しました....";
-        $message = "・・・・・。";
+        $message = "・・・。";
+        $comment_count = 500;
     }
 
     unset($_SESSION["check_count"]);
@@ -124,7 +127,8 @@
             await displayText("Hit合計 : <?=$result_hit?>回");
             await displayText("Blow合計 : <?=$result_blow?>回");
             await displayText(" ");
-            await displayText("担当者から一言 : <?=$message?>");
+            await displayText("担当者から一言 :");
+            await displayText("<?=$message?>", <?=$comment_count?>);
             await displayText("");
 
             showOnemore();
