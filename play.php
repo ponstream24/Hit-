@@ -48,13 +48,15 @@
         exit();
     }
 
-    html_header("シングルプレイ")
+    $_SESSION["result"] = "playnow";
+
+    html_header("シングルプレイ");
 ?>
     <section class="section">
         <div class="container">
-        <h1 class="title has-text-centered">Hit & Blow</h1>
-        <h3 class="subtitle has-text-centered"><?=$username?></h3>
-
+            <h1 class="title has-text-centered">Hit & Blow</h1>
+            <h3 class="subtitle has-text-centered"><?=$username?></h3>
+        
             <!-- 結果表示部分 -->
             <div id="game-status" class="table-container">
                 <table class="table is-bordered">
@@ -69,6 +71,7 @@
                     </tbody>
                 </table>
             </div>
+            <h5 class="has-text-centered" onclick="if(confirm('あきらめますか？')) window.location.href = 'result'">あきらめる</h5>
         </div>
     </section>
 
