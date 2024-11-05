@@ -6,19 +6,24 @@
     $err = array();
 
     if( 
-        isset( $_GET ) &&
-        isset( $_GET["type"] )
+        isset( $_POST ) &&
+        isset( $_POST["type"] )
     ){
-        if( $_GET["type"] == "single" ){
+        if( $_POST["type"] == "single" ){
 
-            
+            $duplicates = true;
+
+            if( isset($_POST["number_generation"]) ){
+                
+                $duplicates = $_POST["number_generation"] != "without_duplicates";
+            }
             unset($_SESSION["check_count"]);
             unset($_SESSION["number"]);
             unset($_SESSION["result_hit"]);
             unset($_SESSION["result_blow"]);
             unset($_SESSION["result"]);
             
-            setNumber();
+            setNumber($duplicates);
         }
         else{
 
@@ -32,7 +37,7 @@
         $err["des"] = "再度接続を試すか、時間を空けてお試しください。<br>ご迷惑をおかけし大変申し訳ございません。";
     }
 
-    $username = $_GET["username"] ?? "ゲスト";
+    $username = $_POST["username"] ?? "ゲスト";
 
     $_SESSION["username"] = $username;
 
