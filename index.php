@@ -93,6 +93,22 @@
         document.querySelector('.modal-background').addEventListener('click', () => {
             gameModeModal.classList.remove('is-active');
         });
+
+        function togglePCMode() {
+            const smartphoneMode = document.getElementById('smartphone_mode');
+            const iframe = document.querySelector('iframe');
+
+            if (window.innerWidth >= 769 && !iframe) {
+                smartphoneMode.style.display = 'inline-flex';
+            } else {
+                smartphoneMode.style.display = 'none';
+            }
+        }
+
+        // ページが読み込まれたときとリサイズされたときに実行
+        window.addEventListener('load', togglePCMode);
+        window.addEventListener('resize', togglePCMode);
+
     </script>
 
 <?=html_footer()?>
