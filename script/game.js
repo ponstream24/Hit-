@@ -12,6 +12,16 @@ function addNumber(num) {
     }
 }
 
+document.addEventListener("keydown", function(event) {
+    if (event.key >= '0' && event.key <= '9') {
+        addNumber(event.key);
+    } else if (event.key === 'Backspace') {
+        deleteNumber();
+    } else if (event.key === 'Enter') {
+        submitNumber();
+    }
+});
+
 function deleteNumber() {
     const audio = new Audio("assets/delete.mp3");
     audio.play();
@@ -64,7 +74,14 @@ function submitNumber() {
 
         document.getElementById("selected-number").textContent = "";
     } else {
-        alert("4桁の数字を入力してください");
+        bulmaToast.toast({
+            opacity: 0.9,
+            dismissible: true,
+            message: "4桁の数字を入力してください",
+            type: "is-warning is-info px-6 is-flex-direction-column",
+            position: "top-center",
+            duration: 3000
+        });
     }
 }
 
