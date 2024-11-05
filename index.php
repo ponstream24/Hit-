@@ -34,6 +34,7 @@
             <div class="container has-text-centered">
                 <h1 class="title">Hit & Blow</h1>
                 <h2 class="subtitle">数字を当てる推理ゲーム！</h2>
+                <button id="smartphone_mode" class="button is-success" onclick="window.location.href='./smartphone'">スマホモードに切り替える</button>
             </div>
         </div>
     </section>
