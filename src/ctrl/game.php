@@ -1,8 +1,8 @@
 <?php
 
-function setNumber(){
+function setNumber($duplicates = true){
 
-    $_SESSION["number"] = GenerateCode(4);
+    $_SESSION["number"] = GenerateCode(4, $duplicates);
     $_SESSION["check_count"] = 0;
     $_SESSION["result_hit"] = 0;
     $_SESSION["result_blow"] = 0;
