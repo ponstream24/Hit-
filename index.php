@@ -3,10 +3,31 @@
 
     require("src/utility.php");
 
-    html_header("Welcome")
-?>
+    $javascript = "";
 
-<body id="index_page">
+    if( 
+        isset( $_SESSION ) &&
+        isset( $_SESSION["temp_error"] )
+    ){
+        $message = $_SESSION["temp_error"]["message"];
+        $des = $_SESSION["temp_error"]["des"];
+
+        $javascript .= '
+            bulmaToast.toast({
+                opacity: 0.9,
+                dismissible: true,
+                message: "<b>'.$message.'</b>'.$des.'",
+                type: "is-warning is-info px-6 is-flex-direction-column",
+                position: "top-center",
+                duration: 3000
+            });
+        ';
+
+        unset($_SESSION["temp_error"]);
+    }
+
+    html_header("Welcome", "index_page")
+?>
     <!-- Heroセクション -->
     <section class="hero is-fullheight">
         <div class="hero-body">
@@ -49,6 +70,9 @@
     </div>
 
     <script>
+
+        <?=$javascript?>
+
         // モーダル開閉の処理
         const startGameBtn = document.getElementById('startGameBtn');
         const gameModeModal = document.getElementById('gameModeModal');

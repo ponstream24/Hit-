@@ -3,20 +3,60 @@
 
     require("src/utility.php");
 
+    $err = array();
+
+    if( 
+        isset( $_GET ) &&
+        isset( $_GET["type"] )
+    ){
+        if( $_GET["type"] == "single" ){
+
+            
+            unset($_SESSION["check_count"]);
+            unset($_SESSION["number"]);
+            unset($_SESSION["result_hit"]);
+            unset($_SESSION["result_blow"]);
+            unset($_SESSION["result"]);
+            
+            setNumber();
+        }
+        else{
+
+            // 非公開サーバーのため、ここは強制タイムアウト
+            $err["message"] = "Timeout : マッチングサーバーとの接続ができませんでした。";
+            $err["des"] = "再度接続を試すか、時間を空けてお試しください。<br>ご迷惑をおかけし大変申し訳ございません。";
+        }
+    }
+    else{
+        $err["message"] = "不明なセッション";
+        $err["des"] = "再度接続を試すか、時間を空けてお試しください。<br>ご迷惑をおかけし大変申し訳ございません。";
+    }
+
+    $username = $_GET["username"] ?? "ゲスト";
+
+    $_SESSION["username"] = $username;
+
+    // エラーあり
+    if( !empty($err) ){
+        $_SESSION["temp_error"] = $err;
+        header("Location: ./");
+        exit();
+    }
+
     html_header("シングルプレイ")
 ?>
-
-<body>
     <section class="section">
         <div class="container">
-            <h1 class="title has-text-centered">Hit & Blow - 2人用(PvP)</h1>
+        <h1 class="title has-text-centered">Hit & Blow</h1>
+        <h3 class="subtitle has-text-centered"><?=$username?></h3>
+
             <!-- 結果表示部分 -->
             <div id="game-status" class="table-container">
                 <table class="table is-bordered">
                     <thead>
                         <tr>
                             <th colspan="4" class="has-text-centered">あなたの入力した数字</th>
-                            <th class="has-text-centered" style="border-left: black 1.5px solid;">Hit</th>
+                            <th class="has-text-centered hit_current">Hit</th>
                             <th class="has-text-centered">Blow</th>
                         </tr>
                     </thead>
@@ -48,6 +88,16 @@
             <button class="button is-success" onclick="submitNumber()">送信</button>
         </div>
     </div>
+
+    <section class="section" id="next" style="display: none;">
+        <div class="container">
+            <div class="buttons is-centered">
+                <form action="result">
+                    <button class="button is-primary" type="submit">次へ</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <script src="script/game.js"></script>
 

@@ -38,11 +38,11 @@ body {
 
 thead tr,
 tr:not(:last-child) {
-    border-bottom: white 1.5px solid;
+    border-bottom: white 2px solid;
 }
 
 tbody tr .has-text-centered:nth-child(5) {
-    border-left: white 1.5px solid;
+    border-left: white 2px solid;
 }
 
 #selected-number {
@@ -60,6 +60,10 @@ tbody tr .has-text-centered:nth-child(5) {
     margin-top: 10px;
     font-size: 0.8rem;
     color: #bbb;
+}
+
+.hit_current{
+    border-left: white 2px solid !important;
 }
 
 #index_page {

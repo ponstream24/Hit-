@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
+<?php
+    session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hit & Blow - 2人用マッチング</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-</head>
+    require("src/utility.php");
 
-<body>
+    html_header("マッチング")
+?>
+
     <section class="section">
         <div class="container">
             <h1 class="title has-text-centered">2人用ゲームマッチング</h1>
-            <form action="play-pvp.html">
+            <form action="play">
+                <input type="hidden" name="type" value="pvp">
                 <div class="field">
                     <label class="label">プレイヤー名</label>
                     <div class="control">
@@ -21,10 +19,10 @@
                 </div>
                 <div class="buttons is-centered">
                     <button class="button is-link" type="submit">マッチングを開始</button>
+                    <button class="button" onclick="window.location.href = './';">戻る</button>
                 </div>
             </form>
         </div>
     </section>
-</body>
 
-</html>
+<?=html_footer()?>
