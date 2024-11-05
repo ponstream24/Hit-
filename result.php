@@ -26,13 +26,6 @@
         header("Location: ./");
         exit();
     }
-    
-    if( $_SESSION["result"] == "success" ){
-        $result_title = "正解しました！";
-    }
-    else{
-        $result_title = "中断しました....";
-    }
 
     $correct = $_SESSION["number"];
     $result_hit = $_SESSION["result_hit"];
@@ -51,6 +44,14 @@
 
     else{
         $message = "ノーコメント。";
+    }
+    
+    if( $_SESSION["result"] == "success" ){
+        $result_title = "正解しました！";
+    }
+    else{
+        $result_title = "中断しました....";
+        $message = "・・・・・。";
     }
 
     unset($_SESSION["check_count"]);
@@ -117,7 +118,7 @@
             await displayText("Hit合計 : <?=$result_hit?>回");
             await displayText("Blow合計 : <?=$result_blow?>回");
             await displayText(" ");
-            await displayText("<?=$message?>");
+            await displayText("担当者から一言 : <?=$message?>");
             await displayText("");
 
             showOnemore();
