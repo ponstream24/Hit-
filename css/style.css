@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding-bottom: 200px;
+    margin-bottom: 110px;
+}
+
+.section {
+    margin-bottom: 100px;
+}
+
+.number-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.table {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#input-area {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid;
+    background-color: var(--bulma-body-background-color);
+}
+
+thead tr,
+tr:not(:last-child) {
+    border-bottom: white 1.5px solid;
+}
+
+tbody tr .has-text-centered:nth-child(5) {
+    border-left: white 1.5px solid;
+}
+
+#selected-number {
+    min-width: 4em;
+    display: block;
+    text-align: center;
+    font-size: x-large;
+    margin-top: -10px;
+    color: white;
+    font-weight: 600;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+#index_page {
+
+    .title {
+        margin-top: 2rem;
+    }
+
+    .button.is-success {
+        margin-top: 1rem;
+    }
+
+    .hero {
+        background-image: url('../img/hitblow.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 400px;
+        position: relative;
+    }
+
+    .hero-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
