@@ -41,10 +41,20 @@
     }
 
     // ランダム数字生成
-    function GenerateCode($length = 4){
-        $max = pow(10, $length) - 1;                    // コードの最大値算出
-        $rand = random_int(0, $max);                    // 乱数生成
-        $code = sprintf('%0'. $length. 'd', $rand);     // 乱数の頭0埋め
+    function GenerateCode($length = 4, $duplicates = true){
+        if ($duplicates) {
+            $max = pow(10, $length) - 1; 
+            $rand = random_int(0, $max);
+            $code = sprintf('%0' . $length . 'd', $rand);
+        } else {
+            // かぶりなしの場合
+            if ($length > 10) {
+                throw new InvalidArgumentException('Length must be 10 or less for unique digits.');
+            }
+            $digits = range(0, 9);
+            shuffle($digits);
+            $code = implode('', array_slice($digits, 0, $length));
+        }
 
         return $code;
     }
