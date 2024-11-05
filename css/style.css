@@ -91,4 +91,14 @@ tbody tr .has-text-centered:nth-child(5) {
         justify-content: center;
         background-color: rgba(0, 0, 0, 0.5);
     }
+
+    #smartphone_mode {
+        display: none;
+    }
+
+    @media (min-width: 769px) {
+        #smartphone_mode {
+            display: inline-flex;
+        }
+    }
 }
